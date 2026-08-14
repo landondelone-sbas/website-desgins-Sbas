@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pricing | SBAS.info LLC</title>
+    <meta
+      name="description"
+      content="Book a discovery call and choose between one-time AI consulting engagements and ongoing retainer support with SBAS.info LLC."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="sub-page-body">
+    <header class="enterprise-header enterprise-shell">
+      <a href="index.html" class="enterprise-brand" aria-label="SBAS.info home">
+        <span class="brand-mark-wrap"><span class="brand-mark">S</span></span>
+        <span>SBAS<span style="color: #b77a2a;">.info</span></span>
+      </a>
+
+      <nav class="enterprise-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="payment.html">Pricing</a>
+      </nav>
+
+      <a href="payment.html" class="enterprise-cta">Book Discovery Call</a>
+    </header>
+
+    <main class="payment-page enterprise-shell">
+      <section class="page-hero">
+        <div>
+          <p class="kicker">Consulting packages</p>
+          <h1 class="hero-title">Choose the engagement that fits your next move.</h1>
+          <p class="hero-copy">
+            Every engagement begins with a discovery conversation to clarify your goals, the workflows
+            involved, and the highest-value opportunities for AI within your organization.
+          </p>
+        </div>
+
+        <div class="hero-panel" aria-label="Consulting package summary">
+          <div class="panel-grid"></div>
+          <div class="metric-stack">
+            <div class="metric-badge">
+              <strong>One-time</strong>
+              <span>Strategy sprint</span>
+            </div>
+            <div class="metric-badge">
+              <strong>Retainer</strong>
+              <span>Ongoing support</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="checkout-shell">
+        <div class="checkout-card">
+          <h1>Discovery Call</h1>
+          <p class="hero-copy" style="max-width: 560px; font-size: 1rem;">
+            Start with a focused conversation to define your business challenge, AI opportunity, and
+            the right path forward for your team.
+          </p>
+
+          <div class="plan-list" aria-label="Pricing plans">
+            <label class="plan-option selected" data-plan-name="AI Strategy Sprint" data-plan-price="4500">
+              <input type="radio" name="plan" checked />
+              <span class="plan-meta">
+                <span class="plan-name">AI Strategy Sprint</span>
+                <span class="plan-price">$4,500</span>
+              </span>
+            </label>
+
+            <label class="plan-option" data-plan-name="Workflow Optimization Project" data-plan-price="7500">
+              <input type="radio" name="plan" />
+              <span class="plan-meta">
+                <span class="plan-name">Workflow Optimization Project</span>
+                <span class="plan-price">$7,500</span>
+              </span>
+            </label>
+
+            <label class="plan-option" data-plan-name="Ongoing Advisory Retainer" data-plan-price="2500">
+              <input type="radio" name="plan" />
+              <span class="plan-meta">
+                <span class="plan-name">Ongoing Advisory Retainer</span>
+                <span class="plan-price">$2,500/mo</span>
+              </span>
+            </label>
+          </div>
+
+          <form id="payment-form" data-payment-form>
+            <div class="form-grid">
+              <div class="field">
+                <label for="first-name">First name</label>
+                <input id="first-name" type="text" value="" placeholder="First name" />
+              </div>
+
+              <div class="field">
+                <label for="last-name">Last name</label>
+                <input id="last-name" type="text" value="" placeholder="Last name" />
+              </div>
+
+              <div class="field full">
+                <label for="company">Company</label>
+                <input id="company" type="text" value="" placeholder="Company" />
+              </div>
+
+              <div class="field">
+                <label for="email">Work email</label>
+                <input id="email" type="email" value="" placeholder="Work email" />
+              </div>
+
+              <div class="field">
+                <label for="budget">Budget range</label>
+                <select id="budget">
+                  <option value="">Select budget</option>
+                  <option>$5k-$10k</option>
+                  <option>$10k-$25k</option>
+                  <option>$25k-$50k</option>
+                  <option>$50k+</option>
+                </select>
+              </div>
+
+              <div class="field full">
+                <label for="notes">What are you trying to solve?</label>
+                <input id="notes" type="text" value="" placeholder="Tell us your challenge" />
+              </div>
+            </div>
+
+            <div class="stripe-ready-panel" aria-live="polite">
+              <div class="stripe-header-row">
+                <span class="stripe-label">Secure payment</span>
+                <span class="stripe-badge">Stripe ready</span>
+              </div>
+              <p class="stripe-text">
+                Card fields and payment processing will be connected here once the Stripe integration is added.
+              </p>
+              <div id="card-element" class="stripe-placeholder" aria-label="Stripe payment field placeholder">
+                Card field placeholder
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <aside class="summary-card">
+          <h2>Engagement Summary</h2>
+          <div class="summary-list">
+            <div class="summary-item">
+              <small>Package</small>
+              <strong data-summary-package>AI Strategy Sprint</strong>
+            </div>
+            <div class="summary-item">
+              <small>Scope</small>
+              <strong>Discovery + roadmap</strong>
+            </div>
+            <div class="summary-item">
+              <small>Timeline</small>
+              <strong>2-4 weeks</strong>
+            </div>
+          </div>
+
+          <div class="summary-total">
+            <span>Total</span>
+            <span data-summary-total>$4,500</span>
+          </div>
+
+          <p class="light-note">
+            Includes a strategic discovery session, operational assessment, executive recommendations,
+            and a prioritized roadmap for implementation.
+          </p>
+
+          <button class="payment-submit" type="submit" form="payment-form" data-payment-submit>
+            Book Discovery Call
+          </button>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-shell">
+        <div class="footer-brand-block">
+          <div class="footer-brand">
+            <span class="brand-mark-wrap"><span class="brand-mark">S</span></span>
+            <span>SBAS<span style="color: #d29e4a;">.info</span></span>
+          </div>
+          <p>AI consulting for modern operations, risk readiness, and sustainable growth.</p>
+        </div>
+
+        <div class="footer-links-block">
+          <h3>Navigate</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="payment.html">Pricing</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-block">
+          <h3>Contact</h3>
+          <ul>
+            <li><a href="mailto:landondelone@gmail.com">landondelone@gmail.com</a></li>
+            <li><a href="tel:+15551234567">(555) 123-4567</a></li>
+            <li><span>United States</span></li>
+          </ul>
+        </div>
+
+        <div class="footer-cta-block">
+          <h3>Start here</h3>
+          <a href="payment.html" class="footer-cta">Book Discovery Call</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 SBAS.info LLC</span>
+        <span>All rights reserved</span>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
