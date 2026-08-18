@@ -224,9 +224,13 @@ select:focus-visible {
   justify-content: center;
   width: 100%;
   height: 100%;
-  font-weight: 900;
-  font-size: 1.5rem;
-  letter-spacing: -0.08em;
+  padding: 6px;
+}
+
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .content-copy {
