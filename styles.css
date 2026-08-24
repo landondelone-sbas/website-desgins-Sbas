@@ -78,6 +78,12 @@ select:focus-visible {
   letter-spacing: -0.06em;
 }
 
+.footer-brand img {
+  display: block;
+  height: 34px;
+  width: auto;
+}
+
 .footer-brand-block p,
 .footer-links-block li,
 .footer-links-block span,
@@ -208,29 +214,10 @@ select:focus-visible {
   justify-content: flex-start;
 }
 
-.brand-mark-wrap {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 46px;
-  height: 46px;
-  border: 2px solid var(--black);
-  background: var(--white);
-}
-
-.brand-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  padding: 6px;
-}
-
-.brand-mark img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+.brand-logo {
+  display: block;
+  height: 40px;
+  width: auto;
 }
 
 .content-copy {
@@ -530,9 +517,8 @@ select:focus-visible {
   letter-spacing: -0.06em;
 }
 
-.enterprise-brand .brand-mark-wrap {
-  width: 38px;
-  height: 38px;
+.enterprise-brand .brand-logo {
+  height: 34px;
 }
 
 .enterprise-nav {

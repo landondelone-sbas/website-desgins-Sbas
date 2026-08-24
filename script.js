@@ -278,7 +278,7 @@ if (paymentForm) {
     const budget = document.getElementById('budget')?.value?.trim() || '';
     const notes = document.getElementById('notes')?.value?.trim() || '';
 
-    const recipient = 'landondelone@gmail.com';
+    const recipient = 'landon.sbas@outlook.com';
     const subject = encodeURIComponent(`New Discovery Call Request: ${selectedName}`);
     const body = encodeURIComponent(
       [
