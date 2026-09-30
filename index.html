@@ -130,6 +130,19 @@
         outline-offset: 2px;
       }
 
+      .sound:not([hidden]) {
+        animation: sound-in 0.4s ease;
+      }
+
+      @keyframes sound-in {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
       .sound svg {
         flex: none;
       }
@@ -194,6 +207,24 @@
         </svg>
         <span id="sound-label">Tap for sound</span>
       </button>
+
+      <button class="sound" id="replay" type="button" hidden>
+        <svg
+          viewBox="0 0 24 24"
+          width="18"
+          height="18"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <polyline points="1 4 1 10 7 10" />
+          <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
+        </svg>
+        <span>Replay</span>
+      </button>
     </main>
 
     <script>
@@ -202,11 +233,14 @@
         var clip = document.getElementById("clip");
         var btn = document.getElementById("sound");
         var label = document.getElementById("sound-label");
+        var replay = document.getElementById("replay");
+        var replayTimer;
 
         // Reduced motion: show the still image only.
         if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
           clip.remove();
           btn.remove();
+          replay.remove();
           return;
         }
 
@@ -218,13 +252,34 @@
           }
         });
 
-        // When the video ends, fade it out so only the still image remains.
+        // When the video ends, fade it out so only the still image remains,
+        // then offer a replay.
         clip.addEventListener("ended", function () {
           btn.hidden = true;
           stage.classList.add("is-done");
-          window.setTimeout(function () {
+          replayTimer = window.setTimeout(function () {
             clip.hidden = true;
+            replay.hidden = false;
           }, 1400);
+        });
+
+        // Replay from the start. The tap counts as a user gesture, so sound is allowed.
+        replay.addEventListener("click", function () {
+          replay.hidden = true;
+          window.clearTimeout(replayTimer);
+          clip.hidden = false;
+          stage.classList.remove("is-playing", "is-done");
+          clip.currentTime = 0;
+          clip.muted = false;
+          clip
+            .play()
+            .catch(function () {
+              clip.muted = true;
+              return clip.play();
+            })
+            .catch(function () {
+              replay.hidden = false;
+            });
         });
 
         clip.addEventListener("error", function () {

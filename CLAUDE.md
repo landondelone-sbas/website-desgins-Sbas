@@ -12,7 +12,7 @@ Static marketing site for SBAS.info (AI & automation). Live at **https://sbasinf
 
 ## Under-construction mode (active)
 
-- `https://sbasinfo.ai/` serves `index.html`, a self-contained under-construction page (inline CSS/JS, no links). It shows a muted autoplay video (`assets/under-construction.mp4`, ~20 s) over a still (`assets/under-construction.jpg`), a "Tap for sound" button, then fades to the still. If autoplay is blocked it shows the still with a "Tap to play" button. With reduced motion it shows only the still.
+- `https://sbasinfo.ai/` serves `index.html`, a self-contained under-construction page (inline CSS/JS, no links). It shows a muted autoplay video (`assets/under-construction.mp4`, ~20 s) over a still (`assets/under-construction.jpg`), a "Tap for sound" button, then fades to the still and shows a "Replay" button (replays from the start, with sound). If autoplay is blocked it shows the still with a "Tap to play" button. With reduced motion it shows only the still.
 - The real site is unlinked but reachable for testing: `/home.html`, `/about.html`, `/payment.html`. They have `<meta name="robots" content="noindex, nofollow">`. They are not password-protected.
 - The "Home"/logo links on those pages point to `home.html`, not `index.html`.
 - The video was trimmed from the source with `crop=1072:1920:4:0` (the source has a 4 px black border on each side) and re-encoded with faststart. Keep the audio track.
