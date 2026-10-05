@@ -278,7 +278,7 @@ if (paymentForm) {
     const budget = document.getElementById('budget')?.value?.trim() || '';
     const notes = document.getElementById('notes')?.value?.trim() || '';
 
-    const recipient = 'landon.sbas@outlook.com';
+    const recipient = 'Larry.Delone@sbasinfo.ai';
     const subject = encodeURIComponent(`New Discovery Call Request: ${selectedName}`);
     const body = encodeURIComponent(
       [
