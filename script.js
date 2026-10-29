@@ -186,9 +186,9 @@ if (canvas && window.THREE) {
 }
 
 const heroFeatureStates = [
-  { index: '01', title: 'AI OPS PLATFORM', subtitle: '92% automation coverage' },
-  { index: '02', title: 'AUTOMATION WORKFLOW', subtitle: '3.4x faster execution' },
-  { index: '03', title: 'INTELLIGENCE LAYER', subtitle: '24/7 operational insight' }
+  { index: '01', title: 'Practical AI & Automation', subtitle: 'Solutions that fit how your business works' },
+  { index: '02', title: 'Built Around Your Business', subtitle: 'Thoughtful systems for your goals and team' },
+  { index: '03', title: 'From Strategy to Support', subtitle: 'A steady partner from first idea to launch' }
 ];
 
 const visualPanel = document.querySelector('.visual-panel');
