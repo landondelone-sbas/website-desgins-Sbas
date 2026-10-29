@@ -5,7 +5,7 @@ Static marketing site for SBAS.info (AI & automation). Live at **https://sbasinf
 ## Stack
 
 - Plain HTML/CSS/JS. No build step, no `package.json`, no framework.
-- Pages: `index.html` (under-construction page, see below), `home.html` (the real home page), `about.html`, `payment.html`. Shared styles in `styles.css`, shared behavior in `script.js`.
+- Pages: `index.html` (under-construction page, see below), `home.html` (the real home page), `about.html`, `payment.html` (the booking page), `faq.html` (expandable questions; instructions for adding one are in an HTML comment at the top of the list), `privacy.html`, `terms.html` (both noindex like the others; remove the tag at go-live; add phone-call and recording disclosures to the privacy page when the Twilio receptionist launches). Shared styles in `styles.css`, shared behavior in `script.js`.
 - `home.html` loads three.js from the unpkg CDN. Fonts come from Google Fonts.
 - Site images live in `assets/`. The PNG logos in the repo root and the `SBAS.info logo` folder are source files, not what the pages load.
 - Logo `<img>` tags use a cache-busting query string (`?v=2`). Bump it in every HTML file when a logo image changes.
@@ -33,11 +33,10 @@ Static marketing site for SBAS.info (AI & automation). Live at **https://sbasinf
 - If the HTTPS certificate is ever missing or stuck after a domain change, remove the custom domain in Settings -> Pages and re-add it to restart provisioning.
 - Always use `https://sbasinfo.ai` (no `www`) as the canonical base URL, for example in redirects, Stripe success/cancel URLs and Open Graph tags.
 
-## Payments (Stripe) - not integrated yet
+## Booking model (no pricing, no payments)
 
-- `payment.html` has a "Stripe ready" placeholder (around the `stripe-ready-panel` / `#card-element` block). No Stripe code exists yet.
-- The plan form is handled in `script.js` (the `[data-payment-form]` submit handler). It currently builds a contact request and does not charge anything.
-- GitHub Pages is static, so never put a Stripe secret key in client code.
-  - Fixed plans and prices: use Stripe Payment Links (no backend needed).
-  - Variable amounts or extra metadata: use Stripe Checkout with a small serverless function (Vercel, Netlify or Cloudflare Workers).
-- Stripe requires HTTPS, which is already on. Set the Stripe business URL to `https://sbasinfo.ai`.
+- The site no longer lists prices or takes payment. Model: book a discovery call, then a custom plan per client. Audience: small and mid-sized businesses. Do not mention products other than what the owner approves (the 340B agent comes first, via pilots; do not name the IT help desk or risk assessment tool).
+- `payment.html` (filename kept so links still work) is now the "Book a Discovery Call" page. Nav label is "Book a Call".
+- The form is handled in `script.js` (the `[data-payment-form]` submit handler). It opens a `mailto:` to Larry.Delone@sbasinfo.ai. Planned: replace with the Twilio AI receptionist booking flow.
+- The "Trusted By" row is removed from `home.html` until real client names are approved. Do not invent client names.
+- The footer phone number was removed because it was a `(555)` placeholder. Add the real number when the receptionist line exists.

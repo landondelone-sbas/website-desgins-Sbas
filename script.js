@@ -233,75 +233,30 @@ if (visualPanel && featureTag && featureIndex && featureTitle && featureSubtitle
 }
 
 const paymentForm = document.querySelector('[data-payment-form]');
-const paymentSubmit = document.querySelector('[data-payment-submit]');
-const summaryPackage = document.querySelector('[data-summary-package]');
-const summaryTotal = document.querySelector('[data-summary-total]');
 
 if (paymentForm) {
-  const updateSummary = (selected) => {
-    const planName = selected?.dataset?.planName || 'AI Strategy Sprint';
-    const planPrice = Number(selected?.dataset?.planPrice || 4500);
-
-    if (summaryPackage) {
-      summaryPackage.textContent = planName;
-    }
-
-    if (summaryTotal) {
-      summaryTotal.textContent = `$${planPrice.toLocaleString()}`;
-    }
-
-    if (paymentSubmit) {
-      paymentSubmit.textContent = `Book Discovery Call · $${planPrice.toLocaleString()}`;
-    }
-  };
-
-  const radioInputs = paymentForm.querySelectorAll('input[name="plan"]');
-
-  radioInputs.forEach((input) => {
-    input.addEventListener('change', () => {
-      const selected = input.closest('.plan-option');
-      updateSummary(selected);
-    });
-  });
-
   paymentForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    const selected = paymentForm.querySelector('input[name="plan"]:checked')?.closest('.plan-option');
-    const selectedName = selected?.dataset?.planName || 'AI Strategy Sprint';
-    const selectedPrice = Number(selected?.dataset?.planPrice || 4500);
-
-    const firstName = document.getElementById('first-name')?.value?.trim() || '';
-    const lastName = document.getElementById('last-name')?.value?.trim() || '';
-    const company = document.getElementById('company')?.value?.trim() || '';
-    const email = document.getElementById('email')?.value?.trim() || '';
-    const budget = document.getElementById('budget')?.value?.trim() || '';
-    const notes = document.getElementById('notes')?.value?.trim() || '';
+    const value = (id) => document.getElementById(id)?.value?.trim() || '';
 
     const recipient = 'Larry.Delone@sbasinfo.ai';
-    const subject = encodeURIComponent(`New Discovery Call Request: ${selectedName}`);
+    const subject = encodeURIComponent('New Discovery Call Request');
     const body = encodeURIComponent(
       [
         'SBAS Discovery Call Inbound Request',
         '',
-        `Plan: ${selectedName}`,
-        `Price: $${selectedPrice.toLocaleString()}`,
-        `First Name: ${firstName}`,
-        `Last Name: ${lastName}`,
-        `Company: ${company}`,
-        `Email: ${email}`,
-        `Budget Range: ${budget}`,
-        `Challenge: ${notes}`,
+        `First Name: ${value('first-name')}`,
+        `Last Name: ${value('last-name')}`,
+        `Company: ${value('company')}`,
+        `Email: ${value('email')}`,
+        `Challenge: ${value('notes')}`,
         '',
         'This request was submitted from the SBAS.info contact form.'
       ].join('\n')
     );
 
     window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
-
     paymentForm.reset();
-    if (summaryPackage) summaryPackage.textContent = 'AI Strategy Sprint';
-    if (summaryTotal) summaryTotal.textContent = '$4,500';
-    if (paymentSubmit) paymentSubmit.textContent = 'Book Discovery Call';
   });
 }

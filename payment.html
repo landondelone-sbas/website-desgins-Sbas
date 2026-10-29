@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>Pricing | SBAS.info LLC</title>
+    <title>Book a Discovery Call | SBAS.info</title>
     <meta
       name="description"
-      content="Book a discovery call and choose between one-time AI consulting engagements and ongoing retainer support with SBAS.info LLC."
+      content="Book a discovery call with SBAS.info. We learn how your business works, then build a custom AI and automation plan around it."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,7 +31,8 @@
       <nav class="enterprise-nav" aria-label="Main navigation">
         <a href="home.html">Home</a>
         <a href="about.html">About</a>
-        <a href="payment.html">Pricing</a>
+        <a href="faq.html">FAQ</a>
+        <a href="payment.html">Book a Call</a>
       </nav>
 
       <a href="payment.html" class="enterprise-cta">Book Discovery Call</a>
@@ -40,15 +41,15 @@
     <main class="payment-page enterprise-shell">
       <section class="page-hero">
         <div>
-          <p class="kicker">Consulting packages</p>
-          <h1 class="hero-title">Choose the engagement that fits your next move.</h1>
+          <p class="kicker">Book a discovery call</p>
+          <h1 class="hero-title">Tell us what is slowing your team down.</h1>
           <p class="hero-copy">
-            Every engagement begins with a discovery conversation to clarify your goals, the workflows
-            involved, and the highest-value opportunities for AI within your organization.
+            Every project starts with a conversation. We learn how your business runs, find the work
+            that is costing you the most time, and build a plan around it.
           </p>
         </div>
 
-        <div class="hero-panel" aria-label="Consulting package summary">
+        <div class="hero-panel" aria-label="How engagements start">
           <img
             class="hero-mascot-image page-hero-mascot"
             src="assets/hero-payment.webp"
@@ -57,12 +58,12 @@
           <div class="panel-grid"></div>
           <div class="metric-stack">
             <div class="metric-badge">
-              <strong>One-time</strong>
-              <span>Strategy sprint</span>
+              <strong>Step 1</strong>
+              <span>Discovery call</span>
             </div>
             <div class="metric-badge">
-              <strong>Retainer</strong>
-              <span>Ongoing support</span>
+              <strong>Step 2</strong>
+              <span>Custom plan</span>
             </div>
           </div>
         </div>
@@ -72,46 +73,19 @@
         <div class="checkout-card">
           <h1>Discovery Call</h1>
           <p class="hero-copy" style="max-width: 560px; font-size: 1rem;">
-            Start with a focused conversation to define your business challenge, AI opportunity, and
-            the right path forward for your team.
+            Share a few details and we will reach out to schedule your call.
           </p>
-
-          <div class="plan-list" aria-label="Pricing plans">
-            <label class="plan-option selected" data-plan-name="AI Strategy Sprint" data-plan-price="4500">
-              <input type="radio" name="plan" checked />
-              <span class="plan-meta">
-                <span class="plan-name">AI Strategy Sprint</span>
-                <span class="plan-price">$4,500</span>
-              </span>
-            </label>
-
-            <label class="plan-option" data-plan-name="Workflow Optimization Project" data-plan-price="7500">
-              <input type="radio" name="plan" />
-              <span class="plan-meta">
-                <span class="plan-name">Workflow Optimization Project</span>
-                <span class="plan-price">$7,500</span>
-              </span>
-            </label>
-
-            <label class="plan-option" data-plan-name="Ongoing Advisory Retainer" data-plan-price="2500">
-              <input type="radio" name="plan" />
-              <span class="plan-meta">
-                <span class="plan-name">Ongoing Advisory Retainer</span>
-                <span class="plan-price">$2,500/mo</span>
-              </span>
-            </label>
-          </div>
 
           <form id="payment-form" data-payment-form>
             <div class="form-grid">
               <div class="field">
                 <label for="first-name">First name</label>
-                <input id="first-name" type="text" value="" placeholder="First name" />
+                <input id="first-name" type="text" required value="" placeholder="First name" />
               </div>
 
               <div class="field">
                 <label for="last-name">Last name</label>
-                <input id="last-name" type="text" value="" placeholder="Last name" />
+                <input id="last-name" type="text" required value="" placeholder="Last name" />
               </div>
 
               <div class="field full">
@@ -121,18 +95,7 @@
 
               <div class="field">
                 <label for="email">Work email</label>
-                <input id="email" type="email" value="" placeholder="Work email" />
-              </div>
-
-              <div class="field">
-                <label for="budget">Budget range</label>
-                <select id="budget">
-                  <option value="">Select budget</option>
-                  <option>$5k-$10k</option>
-                  <option>$10k-$25k</option>
-                  <option>$25k-$50k</option>
-                  <option>$50k+</option>
-                </select>
+                <input id="email" type="email" required value="" placeholder="Work email" />
               </div>
 
               <div class="field full">
@@ -140,47 +103,28 @@
                 <input id="notes" type="text" value="" placeholder="Tell us your challenge" />
               </div>
             </div>
-
-            <div class="stripe-ready-panel" aria-live="polite">
-              <div class="stripe-header-row">
-                <span class="stripe-label">Secure payment</span>
-                <span class="stripe-badge">Stripe ready</span>
-              </div>
-              <p class="stripe-text">
-                Card fields and payment processing will be connected here once the Stripe integration is added.
-              </p>
-              <div id="card-element" class="stripe-placeholder" aria-label="Stripe payment field placeholder">
-                Card field placeholder
-              </div>
-            </div>
           </form>
         </div>
 
         <aside class="summary-card">
-          <h2>Engagement Summary</h2>
+          <h2>What happens next</h2>
           <div class="summary-list">
             <div class="summary-item">
-              <small>Package</small>
-              <strong data-summary-package>AI Strategy Sprint</strong>
+              <small>Step 1</small>
+              <strong>We confirm your call time</strong>
             </div>
             <div class="summary-item">
-              <small>Scope</small>
-              <strong>Discovery + roadmap</strong>
+              <small>Step 2</small>
+              <strong>A discovery conversation about your business</strong>
             </div>
             <div class="summary-item">
-              <small>Timeline</small>
-              <strong>2-4 weeks</strong>
+              <small>Step 3</small>
+              <strong>A custom plan built for your business</strong>
             </div>
-          </div>
-
-          <div class="summary-total">
-            <span>Total</span>
-            <span data-summary-total>$4,500</span>
           </div>
 
           <p class="light-note">
-            Includes a strategic discovery session, operational assessment, executive recommendations,
-            and a prioritized roadmap for implementation.
+            After we talk, we will put together a plan that fits your team and your goals.
           </p>
 
           <button class="payment-submit" type="submit" form="payment-form" data-payment-submit>
@@ -196,7 +140,7 @@
           <div class="footer-brand">
             <img class="brand-logo" src="assets/logo-full-white.png?v=2" alt="SBAS.info" />
           </div>
-          <p>AI consulting for modern operations, risk readiness, and sustainable growth.</p>
+          <p>Custom AI agents and automation for small and mid-sized businesses.</p>
         </div>
 
         <div class="footer-links-block">
@@ -204,7 +148,8 @@
           <ul>
             <li><a href="home.html">Home</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="payment.html">Pricing</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="payment.html">Book a Call</a></li>
           </ul>
         </div>
 
@@ -212,7 +157,6 @@
           <h3>Contact</h3>
           <ul>
             <li><a href="mailto:Larry.Delone@sbasinfo.ai">Larry.Delone@sbasinfo.ai</a></li>
-            <li><a href="tel:+15551234567">(555) 123-4567</a></li>
             <li><span>United States</span></li>
           </ul>
         </div>
@@ -225,7 +169,7 @@
 
       <div class="footer-bottom">
         <span>© 2026 SBAS.info LLC</span>
-        <span>All rights reserved</span>
+        <span class="footer-legal"><a href="privacy.html">Privacy</a> <a href="terms.html">Terms</a></span>
       </div>
     </footer>
 
