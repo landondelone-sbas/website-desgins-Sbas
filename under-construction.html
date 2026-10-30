@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>SBAS.info | AI &amp; Automation - Under Construction</title>
+    <meta
+      name="description"
+      content="SBAS.info is building its new AI &amp; Automation-driven website. Please check back soon."
+    />
+    <link rel="canonical" href="https://sbasinfo.ai/" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SBAS.info" />
+    <meta property="og:title" content="SBAS.info | AI &amp; Automation - Under Construction" />
+    <meta
+      property="og:description"
+      content="We are building our future. Our new AI &amp; Automation-driven website is currently being optimized. Please check back soon."
+    />
+    <meta property="og:url" content="https://sbasinfo.ai/" />
+    <meta property="og:image" content="https://sbasinfo.ai/assets/under-construction.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background: #fff;
+        color-scheme: light;
+      }
+
+      body {
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+      }
+
+      /* Portrait stage, sized to fit the screen with the artwork's 1072x1920 proportions. */
+      .stage {
+        --stage-w: min(100vw, calc(100vh * 1072 / 1920));
+        --stage-w: min(100vw, calc(100dvh * 1072 / 1920));
+        position: relative;
+        width: var(--stage-w);
+        aspect-ratio: 1072 / 1920;
+      }
+
+      .frame {
+        position: absolute;
+        inset: 0;
+      }
+
+      /* Wider than the artwork: fade the left/right edges into the white page. */
+      @media (min-aspect-ratio: 1072 / 1920) {
+        .frame {
+          -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+        }
+      }
+
+      /* Narrower than the artwork (phones): fade the top/bottom edges instead. */
+      @media (max-aspect-ratio: 1072 / 1920) {
+        .frame {
+          -webkit-mask-image: linear-gradient(to bottom, transparent, #000 4%, #000 96%, transparent);
+          mask-image: linear-gradient(to bottom, transparent, #000 4%, #000 96%, transparent);
+        }
+      }
+
+      .layer {
+        position: absolute;
+        inset: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .clip {
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .stage.is-playing .clip {
+        opacity: 1;
+      }
+
+      .stage.is-done .clip {
+        opacity: 0;
+        transition: opacity 1.2s ease;
+      }
+
+      .sound {
+        position: absolute;
+        top: max(12px, env(safe-area-inset-top));
+        right: 4%;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        border: 0;
+        border-radius: 999px;
+        background: rgba(20, 20, 20, 0.78);
+        color: #fff;
+        font: 600 14px/1 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+        letter-spacing: 0.01em;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .sound:hover {
+        background: rgba(0, 0, 0, 0.9);
+      }
+
+      .sound:focus-visible {
+        outline: 3px solid #f2c200;
+        outline-offset: 2px;
+      }
+
+      .sound:not([hidden]) {
+        animation: sound-in 0.4s ease;
+      }
+
+      @keyframes sound-in {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .sound svg {
+        flex: none;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="stage" id="stage">
+      <h1 class="sr-only">SBAS.info - We are building our future.</h1>
+      <p class="sr-only">
+        Our new AI &amp; Automation-driven website is currently being optimized. Please check back soon.
+      </p>
+
+      <div class="frame">
+        <img
+          class="layer still"
+          src="assets/under-construction.jpg"
+          width="1536"
+          height="2752"
+          alt="SBAS.info, AI / Automation. Under construction."
+        />
+        <video
+          class="layer clip"
+          id="clip"
+          muted
+          autoplay
+          playsinline
+          preload="auto"
+          disablepictureinpicture
+          aria-hidden="true"
+        >
+          <source src="assets/under-construction.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <button class="sound" id="sound" type="button" hidden>
+        <svg
+          viewBox="0 0 24 24"
+          width="18"
+          height="18"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M11 5 6 9H2v6h4l5 4V5z" />
+          <line x1="23" y1="9" x2="17" y2="15" />
+          <line x1="17" y1="9" x2="23" y2="15" />
+        </svg>
+        <span id="sound-label">Tap for sound</span>
+      </button>
+
+      <button class="sound" id="replay" type="button" hidden>
+        <svg
+          viewBox="0 0 24 24"
+          width="18"
+          height="18"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <polyline points="1 4 1 10 7 10" />
+          <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
+        </svg>
+        <span>Replay</span>
+      </button>
+    </main>
+
+    <script>
+      (function () {
+        var stage = document.getElementById("stage");
+        var clip = document.getElementById("clip");
+        var btn = document.getElementById("sound");
+        var label = document.getElementById("sound-label");
+        var replay = document.getElementById("replay");
+        var replayTimer;
+
+        // Reduced motion: show the still image only.
+        if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          clip.remove();
+          btn.remove();
+          replay.remove();
+          return;
+        }
+
+        clip.addEventListener("playing", function () {
+          stage.classList.add("is-playing");
+          if (clip.muted) {
+            label.textContent = "Tap for sound";
+            btn.hidden = false;
+          }
+        });
+
+        // When the video ends, fade it out so only the still image remains,
+        // then offer a replay.
+        clip.addEventListener("ended", function () {
+          btn.hidden = true;
+          stage.classList.add("is-done");
+          replayTimer = window.setTimeout(function () {
+            clip.hidden = true;
+            replay.hidden = false;
+          }, 1400);
+        });
+
+        // Replay from the start. The tap counts as a user gesture, so sound is allowed.
+        replay.addEventListener("click", function () {
+          replay.hidden = true;
+          window.clearTimeout(replayTimer);
+          clip.hidden = false;
+          stage.classList.remove("is-playing", "is-done");
+          clip.currentTime = 0;
+          clip.muted = false;
+          clip
+            .play()
+            .catch(function () {
+              clip.muted = true;
+              return clip.play();
+            })
+            .catch(function () {
+              replay.hidden = false;
+            });
+        });
+
+        clip.addEventListener("error", function () {
+          btn.hidden = true;
+        });
+
+        btn.addEventListener("click", function () {
+          btn.hidden = true;
+          clip.muted = false;
+          if (clip.paused) {
+            clip.play().catch(function () {
+              clip.muted = true;
+            });
+          }
+        });
+
+        // Browsers only autoplay muted video. If even that is blocked (for example
+        // iOS Low Power Mode), keep the still image and offer a tap to play.
+        clip.muted = true;
+        var started = clip.play();
+        if (started && started.catch) {
+          started.catch(function () {
+            label.textContent = "Tap to play";
+            btn.hidden = false;
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

@@ -5,18 +5,16 @@ Static marketing site for SBAS.info (AI & automation). Live at **https://sbasinf
 ## Stack
 
 - Plain HTML/CSS/JS. No build step, no `package.json`, no framework.
-- Pages: `index.html` (under-construction page, see below), `home.html` (the real home page), `about.html`, `payment.html` (the booking page), `faq.html` (expandable questions; instructions for adding one are in an HTML comment at the top of the list), `privacy.html`, `terms.html` (both noindex like the others; remove the tag at go-live; add phone-call and recording disclosures to the privacy page when the Twilio receptionist launches). Shared styles in `styles.css`, shared behavior in `script.js`.
+- Pages: `index.html` (the homepage), `under-construction.html` (the retained under-construction page; see below), `about.html`, `payment.html` (the booking page), `faq.html` (expandable questions; instructions for adding one are in an HTML comment at the top of the list), `privacy.html`, `terms.html` (add phone-call and recording disclosures to the privacy page when the Twilio receptionist launches). Shared styles in `styles.css`, shared behavior in `script.js`.
 - `home.html` loads three.js from the unpkg CDN. Fonts come from Google Fonts.
 - Site images live in `assets/`. The PNG logos in the repo root and the `SBAS.info logo` folder are source files, not what the pages load.
 - Logo `<img>` tags use a cache-busting query string (`?v=2`). Bump it in every HTML file when a logo image changes.
 
-## Under-construction mode (active)
+## Under-construction page (archived)
 
-- `https://sbasinfo.ai/` serves `index.html`, a self-contained under-construction page (inline CSS/JS, no links). It shows a muted autoplay video (`assets/under-construction.mp4`, ~20 s) over a still (`assets/under-construction.jpg`), a "Tap for sound" button, then fades to the still and shows a "Replay" button (replays from the start, with sound). If autoplay is blocked it shows the still with a "Tap to play" button. With reduced motion it shows only the still.
-- The real site is unlinked but reachable for testing: `/home.html`, `/about.html`, `/payment.html`. They have `<meta name="robots" content="noindex, nofollow">`. They are not password-protected.
-- The "Home"/logo links on those pages point to `home.html`, not `index.html`.
+- `under-construction.html` retains the self-contained under-construction page (inline CSS/JS, no links). It shows a muted autoplay video (`assets/under-construction.mp4`, ~20 s) over a still (`assets/under-construction.jpg`), a "Tap for sound" button, then fades to the still and shows a "Replay" button (replays from the start, with sound). If autoplay is blocked it shows the still with a "Tap to play" button. With reduced motion it shows only the still.
+- The homepage is `index.html`; "Home"/logo links on site pages point to it.
 - The video was trimmed from the source with `crop=1072:1920:4:0` (the source has a 4 px black border on each side) and re-encoded with faststart. Keep the audio track.
-- To go live: rename `index.html` to `under-construction.html` (or delete it), rename `home.html` to `index.html`, point the "Home"/logo links in `home.html`, `about.html` and `payment.html` back to `index.html`, and remove the noindex meta tag from all three.
 
 ## Hosting and deploys
 
