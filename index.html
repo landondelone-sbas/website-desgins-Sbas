@@ -2,188 +2,311 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SBAS.info | AI & Automation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>SBAS.info | AI &amp; Automation - Under Construction</title>
     <meta
       name="description"
-      content="SBAS.info builds custom AI agents and automations for small and mid-sized businesses. Book a discovery call."
+      content="SBAS.info is building its new AI &amp; Automation-driven website. Please check back soon."
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700;800;900&display=swap"
-      rel="stylesheet"
+    <link rel="canonical" href="https://sbasinfo.ai/" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SBAS.info" />
+    <meta property="og:title" content="SBAS.info | AI &amp; Automation - Under Construction" />
+    <meta
+      property="og:description"
+      content="We are building our future. Our new AI &amp; Automation-driven website is currently being optimized. Please check back soon."
     />
+    <meta property="og:url" content="https://sbasinfo.ai/" />
+    <meta property="og:image" content="https://sbasinfo.ai/assets/under-construction.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <link rel="stylesheet" href="styles.css" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background: #fff;
+        color-scheme: light;
+      }
+
+      body {
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+      }
+
+      /* Portrait stage, sized to fit the screen with the artwork's 1072x1920 proportions. */
+      .stage {
+        --stage-w: min(100vw, calc(100vh * 1072 / 1920));
+        --stage-w: min(100vw, calc(100dvh * 1072 / 1920));
+        position: relative;
+        width: var(--stage-w);
+        aspect-ratio: 1072 / 1920;
+      }
+
+      .frame {
+        position: absolute;
+        inset: 0;
+      }
+
+      /* Wider than the artwork: fade the left/right edges into the white page. */
+      @media (min-aspect-ratio: 1072 / 1920) {
+        .frame {
+          -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+        }
+      }
+
+      /* Narrower than the artwork (phones): fade the top/bottom edges instead. */
+      @media (max-aspect-ratio: 1072 / 1920) {
+        .frame {
+          -webkit-mask-image: linear-gradient(to bottom, transparent, #000 4%, #000 96%, transparent);
+          mask-image: linear-gradient(to bottom, transparent, #000 4%, #000 96%, transparent);
+        }
+      }
+
+      .layer {
+        position: absolute;
+        inset: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .clip {
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .stage.is-playing .clip {
+        opacity: 1;
+      }
+
+      .stage.is-done .clip {
+        opacity: 0;
+        transition: opacity 1.2s ease;
+      }
+
+      .sound {
+        position: absolute;
+        top: max(12px, env(safe-area-inset-top));
+        right: 4%;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        border: 0;
+        border-radius: 999px;
+        background: rgba(20, 20, 20, 0.78);
+        color: #fff;
+        font: 600 14px/1 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+        letter-spacing: 0.01em;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .sound:hover {
+        background: rgba(0, 0, 0, 0.9);
+      }
+
+      .sound:focus-visible {
+        outline: 3px solid #f2c200;
+        outline-offset: 2px;
+      }
+
+      .sound:not([hidden]) {
+        animation: sound-in 0.4s ease;
+      }
+
+      @keyframes sound-in {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .sound svg {
+        flex: none;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
   </head>
   <body>
-    <div class="page-frame">
-      <div class="split-shell">
-        <section class="content-panel">
-          <header class="content-header">
-            <img class="brand-logo" src="assets/logo-full.png?v=2" alt="SBAS.info" />
-          </header>
+    <main class="stage" id="stage">
+      <h1 class="sr-only">SBAS.info - We are building our future.</h1>
+      <p class="sr-only">
+        Our new AI &amp; Automation-driven website is currently being optimized. Please check back soon.
+      </p>
 
-          <div class="content-copy">
-            <p class="eyebrow">SBAS.info: AI and automation for small and mid-sized businesses</p>
-            <h1>WE BUILD AGENTS<br />THAT SAVE TIME<br />AND MONEY.</h1>
-            <p class="subhead">
-              An AI agent is software that handles a repeatable task for you, like answering routine
-              questions, sorting requests or preparing reports. We find the work that eats your
-              team's day and build agents around it.
-            </p>
-
-            <div class="cta-row">
-              <a href="payment.html" class="primary-btn">Book Discovery Call</a>
-            </div>
-          </div>
-        </section>
-
-        <aside class="visual-panel">
-          <nav class="visual-nav" aria-label="Main navigation">
-            <div class="nav-links">
-              <a href="index.html">Home</a>
-              <a href="about.html">About</a>
-              <a href="faq.html">FAQ</a>
-              <a href="payment.html">Book a Call</a>
-            </div>
-            <a class="login-btn" href="payment.html">Book Discovery Call</a>
-          </nav>
-
-          <div class="visual-stage">
-            <img
-              class="hero-mascot-image home-hero-image"
-              src="assets/hero-home.webp"
-              alt="The SBAS mascot greeting visitors in a modern office"
-            />
-          </div>
-
-          <div class="feature-tag" data-feature-tag aria-live="polite">
-            <span class="tag-index" data-feature-index>01</span>
-            <div class="feature-copy">
-              <strong data-feature-title>Practical AI &amp; Automation</strong>
-              <small data-feature-subtitle>Solutions that fit how your business works</small>
-            </div>
-          </div>
-
-          <div class="arrow-controls" aria-label="Slide controls">
-            <button type="button" data-feature-button="prev" aria-label="Previous">←</button>
-            <button type="button" data-feature-button="next" aria-label="Next">→</button>
-          </div>
-        </aside>
+      <div class="frame">
+        <img
+          class="layer still"
+          src="assets/under-construction.jpg"
+          width="1536"
+          height="2752"
+          alt="SBAS.info, AI / Automation. Under construction."
+        />
+        <video
+          class="layer clip"
+          id="clip"
+          muted
+          autoplay
+          playsinline
+          preload="auto"
+          disablepictureinpicture
+          aria-hidden="true"
+        >
+          <source src="assets/under-construction.mp4" type="video/mp4" />
+        </video>
       </div>
 
-      <section class="homepage-capabilities" aria-label="Core SBAS capabilities">
-        <div class="capability-card">
-          <span class="capability-index">01</span>
-          <h2>Custom AI agents built around your business</h2>
-          <p>
-            We build agents and automations around how your team actually works, and connect them
-            to the tools you already use.
-          </p>
-        </div>
+      <button class="sound" id="sound" type="button" hidden>
+        <svg
+          viewBox="0 0 24 24"
+          width="18"
+          height="18"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M11 5 6 9H2v6h4l5 4V5z" />
+          <line x1="23" y1="9" x2="17" y2="15" />
+          <line x1="17" y1="9" x2="23" y2="15" />
+        </svg>
+        <span id="sound-label">Tap for sound</span>
+      </button>
 
-        <div class="capability-card">
-          <span class="capability-index">02</span>
-          <h2>We start by finding the bottleneck</h2>
-          <p>
-            On the discovery call we look at where your team loses time, then choose the first task
-            worth automating.
-          </p>
-        </div>
+      <button class="sound" id="replay" type="button" hidden>
+        <svg
+          viewBox="0 0 24 24"
+          width="18"
+          height="18"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <polyline points="1 4 1 10 7 10" />
+          <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
+        </svg>
+        <span>Replay</span>
+      </button>
+    </main>
 
-        <div class="capability-card">
-          <span class="capability-index">03</span>
-          <h2>Get your team's time back</h2>
-          <p>
-            Repetitive checklists become routines that run on their own, so your people can spend
-            their days on customers and decisions.
-          </p>
-        </div>
-      </section>
+    <script>
+      (function () {
+        var stage = document.getElementById("stage");
+        var clip = document.getElementById("clip");
+        var btn = document.getElementById("sound");
+        var label = document.getElementById("sound-label");
+        var replay = document.getElementById("replay");
+        var replayTimer;
 
-      <section class="how-it-works" aria-label="How it works">
-        <div class="how-heading">
-          <p class="eyebrow">How it works</p>
-          <h2>From first call to a working agent.</h2>
-        </div>
+        // Reduced motion: show the still image only.
+        if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          clip.remove();
+          btn.remove();
+          replay.remove();
+          return;
+        }
 
-        <div class="homepage-capabilities how-steps">
-          <div class="capability-card">
-            <span class="capability-index">Step 1</span>
-            <h2>Discovery call</h2>
-            <p>
-              We learn how your business runs and where the repetitive work is piling up.
-            </p>
-          </div>
+        clip.addEventListener("playing", function () {
+          stage.classList.add("is-playing");
+          if (clip.muted) {
+            label.textContent = "Tap for sound";
+            btn.hidden = false;
+          }
+        });
 
-          <div class="capability-card">
-            <span class="capability-index">Step 2</span>
-            <h2>Custom plan</h2>
-            <p>
-              We map out the agent or automation that fits your team, and what it will take to build.
-            </p>
-          </div>
+        // When the video ends, fade it out so only the still image remains,
+        // then offer a replay.
+        clip.addEventListener("ended", function () {
+          btn.hidden = true;
+          stage.classList.add("is-done");
+          replayTimer = window.setTimeout(function () {
+            clip.hidden = true;
+            replay.hidden = false;
+          }, 1400);
+        });
 
-          <div class="capability-card">
-            <span class="capability-index">Step 3</span>
-            <h2>We build and support it</h2>
-            <p>
-              We build it, connect it to your tools, and stay available as your team starts using it.
-            </p>
-          </div>
-        </div>
+        // Replay from the start. The tap counts as a user gesture, so sound is allowed.
+        replay.addEventListener("click", function () {
+          replay.hidden = true;
+          window.clearTimeout(replayTimer);
+          clip.hidden = false;
+          stage.classList.remove("is-playing", "is-done");
+          clip.currentTime = 0;
+          clip.muted = false;
+          clip
+            .play()
+            .catch(function () {
+              clip.muted = true;
+              return clip.play();
+            })
+            .catch(function () {
+              replay.hidden = false;
+            });
+        });
 
-        <div class="cta-row how-cta">
-          <a href="payment.html" class="primary-btn">Book Discovery Call</a>
-        </div>
-      </section>
+        clip.addEventListener("error", function () {
+          btn.hidden = true;
+        });
 
-      <footer class="site-footer">
-        <div class="site-footer-shell">
-          <div class="footer-brand-block">
-            <div class="footer-brand">
-              <img class="brand-logo" src="assets/logo-full-white.png?v=2" alt="SBAS.info" />
-            </div>
-            <p>Custom AI agents and automation for small and mid-sized businesses.</p>
-          </div>
+        btn.addEventListener("click", function () {
+          btn.hidden = true;
+          clip.muted = false;
+          if (clip.paused) {
+            clip.play().catch(function () {
+              clip.muted = true;
+            });
+          }
+        });
 
-          <div class="footer-links-block">
-            <h3>Navigate</h3>
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">About</a></li>
-              <li><a href="faq.html">FAQ</a></li>
-              <li><a href="payment.html">Book a Call</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-links-block">
-            <h3>Contact</h3>
-            <ul>
-              <li><a href="mailto:Larry.Delone@sbasinfo.ai">Larry.Delone@sbasinfo.ai</a></li>
-              <li><span>United States</span></li>
-            </ul>
-          </div>
-
-          <div class="footer-cta-block">
-            <h3>Start here</h3>
-            <a href="payment.html" class="footer-cta">Book Discovery Call</a>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <span>© 2026 SBAS.info LLC</span>
-          <span class="footer-legal"><a href="privacy.html">Privacy</a> <a href="terms.html">Terms</a></span>
-        </div>
-      </footer>
-    </div>
-
-    <script src="script.js"></script>
+        // Browsers only autoplay muted video. If even that is blocked (for example
+        // iOS Low Power Mode), keep the still image and offer a tap to play.
+        clip.muted = true;
+        var started = clip.play();
+        if (started && started.catch) {
+          started.catch(function () {
+            label.textContent = "Tap to play";
+            btn.hidden = false;
+          });
+        }
+      })();
+    </script>
   </body>
 </html>
