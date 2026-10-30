@@ -35,6 +35,6 @@ Static marketing site for SBAS.info (AI & automation). Live at **https://sbasinf
 
 - The site no longer lists prices or takes payment. Model: book a discovery call, then a custom plan per client. Audience: small and mid-sized businesses. Do not mention products other than what the owner approves (the 340B agent comes first, via pilots; do not name the IT help desk or risk assessment tool).
 - `payment.html` (filename kept so links still work) is now the "Book a Discovery Call" page. Nav label is "Book a Call".
-- The form is handled in `script.js` (the `[data-payment-form]` submit handler). It opens a `mailto:` to Larry.Delone@sbasinfo.ai. Planned: replace with the Twilio AI receptionist booking flow.
+- The form is handled in `script.js` (the `[data-payment-form]` submit handler). If the form's `data-lead-url` attribute is empty it opens a `mailto:` draft to Larry and Landon (today's live behavior). When `data-lead-url` is set to the receptionist server's `/lead` address (see `SBAS/Receptionist`), it posts there, shows a thank-you message, and falls back to the email draft on any failure. A hidden `website` field is the spam trap; leave it empty and off-screen. Set `data-lead-url` only after the server is deployed, and update `privacy.html` at the same time.
 - The "Trusted By" row is removed from `home.html` until real client names are approved. Do not invent client names.
 - The footer phone number was removed because it was a `(555)` placeholder. Add the real number when the receptionist line exists.

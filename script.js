@@ -235,28 +235,98 @@ if (visualPanel && featureTag && featureIndex && featureTitle && featureSubtitle
 const paymentForm = document.querySelector('[data-payment-form]');
 
 if (paymentForm) {
-  paymentForm.addEventListener('submit', (event) => {
-    event.preventDefault();
+  const submitButton = document.querySelector('[data-payment-submit]');
+  const statusEl = paymentForm.querySelector('[data-form-status]');
+  // Set data-lead-url on the form to the receptionist server's /lead address to
+  // send submissions there. While it is empty, the form opens an email draft instead.
+  const getLeadUrl = () => (paymentForm.dataset.leadUrl || '').trim();
+  const recipients = ['Larry.Delone@sbasinfo.ai', 'Landon.Delone@sbasinfo.ai'];
+  const defaultLabel = submitButton ? submitButton.textContent.trim() : 'Book Discovery Call';
 
-    const value = (id) => document.getElementById(id)?.value?.trim() || '';
+  const value = (id) => document.getElementById(id)?.value?.trim() || '';
 
-    const recipients = ['Larry.Delone@sbasinfo.ai', 'Landon.Delone@sbasinfo.ai'];
+  const setStatus = (message, kind) => {
+    if (!statusEl) return;
+    statusEl.textContent = message;
+    statusEl.dataset.kind = kind || '';
+  };
+
+  const setSending = (sending) => {
+    if (!submitButton) return;
+    submitButton.disabled = sending;
+    submitButton.textContent = sending ? 'Sending...' : defaultLabel;
+  };
+
+  // Fallback: let the visitor's own email app send it.
+  const openEmailDraft = (data) => {
     const subject = encodeURIComponent('New Discovery Call Request');
     const body = encodeURIComponent(
       [
         'SBAS Discovery Call Inbound Request',
         '',
-        `First Name: ${value('first-name')}`,
-        `Last Name: ${value('last-name')}`,
-        `Company: ${value('company')}`,
-        `Email: ${value('email')}`,
-        `Challenge: ${value('notes')}`,
+        `First Name: ${data.firstName}`,
+        `Last Name: ${data.lastName}`,
+        `Company: ${data.company}`,
+        `Email: ${data.email}`,
+        `Challenge: ${data.challenge}`,
         '',
         'This request was submitted from the SBAS.info contact form.'
       ].join('\n')
     );
-
-    // Not reset on purpose: if no email app opens, the visitor keeps what they typed.
     window.location.href = `mailto:${recipients.join(',')}?subject=${subject}&body=${body}`;
+  };
+
+  paymentForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const data = {
+      firstName: value('first-name'),
+      lastName: value('last-name'),
+      company: value('company'),
+      email: value('email'),
+      challenge: value('notes'),
+      website: value('website') // hidden spam trap, left empty by real visitors
+    };
+
+    const leadUrl = getLeadUrl();
+    if (!leadUrl) {
+      openEmailDraft(data);
+      return;
+    }
+
+    setStatus('', '');
+    setSending(true);
+
+    try {
+      const response = await fetch(leadUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const result = await response.json().catch(() => ({}));
+
+      if (response.ok && result.ok) {
+        paymentForm.reset();
+        setStatus("Thanks! We've got your request and will be in touch to schedule your call.", 'success');
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.textContent = 'Request sent';
+        }
+        return;
+      }
+
+      if (response.status === 400 && result.error) {
+        setStatus(result.error, 'error');
+        setSending(false);
+        return;
+      }
+
+      throw new Error(`Unexpected response ${response.status}`);
+    } catch (error) {
+      // Server unreachable, too many requests, or an error: do not lose the lead.
+      setStatus("We couldn't send that just now, so we're opening an email instead.", 'error');
+      setSending(false);
+      openEmailDraft(data);
+    }
   });
 }
