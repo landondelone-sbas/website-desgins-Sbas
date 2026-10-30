@@ -240,7 +240,7 @@ if (paymentForm) {
 
     const value = (id) => document.getElementById(id)?.value?.trim() || '';
 
-    const recipient = 'Larry.Delone@sbasinfo.ai';
+    const recipients = ['Larry.Delone@sbasinfo.ai', 'Landon.Delone@sbasinfo.ai'];
     const subject = encodeURIComponent('New Discovery Call Request');
     const body = encodeURIComponent(
       [
@@ -256,7 +256,7 @@ if (paymentForm) {
       ].join('\n')
     );
 
-    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
-    paymentForm.reset();
+    // Not reset on purpose: if no email app opens, the visitor keeps what they typed.
+    window.location.href = `mailto:${recipients.join(',')}?subject=${subject}&body=${body}`;
   });
 }
